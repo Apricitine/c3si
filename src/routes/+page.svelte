@@ -3,7 +3,7 @@
 </script>
 
 <ul>
-  {#each data.instruments as instrument}
-    <li>{instrument.name}</li>
+  {#each data.scholarships as scholarship}
+    <li><a href={scholarship.primary_link}>{scholarship.name}</a> - {scholarship.description}</li>
   {/each}
 </ul>

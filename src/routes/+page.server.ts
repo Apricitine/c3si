@@ -1,16 +1,23 @@
 import type { PageServerLoad } from './$types';
 import { supabase } from '$lib/supabaseClient';
-type Instrument = {
-  id: number;
-  name: string;
-};
+
+
+type Scholarship = {
+  id: number
+  name: string
+  created: string
+  description: string
+  deadline: string
+  primary_link: string
+  filters: { filters: [] }
+}
+
 export const load: PageServerLoad = async () => {
-  const { data, error } = await supabase.from('instruments').select<'instruments', Instrument>();
+  const { data, error } = await supabase.from('scholarships').select<'scholarships', Scholarship>();
   if (error) {
-    console.error('Error loading instruments:', error.message);
-    return { instruments: [] };
+    console.error('Error loading scholarships:', error.message);
+    return { scholarships: [] };
   }
-  return {
-    instruments: data ?? [],
-  };
-};
+  return { scholarships: data ?? [] }
+  
+}
