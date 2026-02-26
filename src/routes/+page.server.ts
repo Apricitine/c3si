@@ -19,5 +19,4 @@ export const load: PageServerLoad = async () => {
     return { scholarships: [] };
   }
   return { scholarships: data ?? [] }
-  
 }
