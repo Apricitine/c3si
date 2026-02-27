@@ -14,10 +14,6 @@
 {/each}
 </ul>
 
-
-
 <style lang="scss">
-    
-
 
 </style>
