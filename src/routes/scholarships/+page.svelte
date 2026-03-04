@@ -8,6 +8,7 @@
 
 <button onclick={() => (showModal = true)}>show modal</button>
 
+
 <Modal bing:showModal>
     <h1> hi</h1>
 </Modal>

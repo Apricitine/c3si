@@ -20,6 +20,7 @@
       C3 App / List of summer programs & volunteering opportunities
     </h1>
     <div class="routes">
+	  <a class="route-link" href="/">Home</a>
       <a class="route-link" href="./scholarships">Scholarships</a>
       <a class="route-link" href="./internships">Internships</a>
     </div>
