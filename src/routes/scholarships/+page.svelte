@@ -1,5 +1,5 @@
 <script>
-    import Modal from '/src/lib/components/Modal.svelte';
+    import Modal from '$lib/components/Modal.svelte';
     let showModal = $state(false);
 
 </script>
