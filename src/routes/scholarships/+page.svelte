@@ -2,6 +2,7 @@
     import type { PageServerData } from "../$types";
     import Modal from "$lib/components/Modal.svelte"
     import Scholarship from "$lib/components/Scholarship.svelte"
+    import Tag from "$lib/components/Tag.svelte"
     
     let { data }: PageServerData = $props()
     let showModal = $state(false)
@@ -25,4 +26,5 @@
 
 <Modal bind:showModal>
     hi
+    <Tag color="cyan" name="monkey"></Tag>
 </Modal>
