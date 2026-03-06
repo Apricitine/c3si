@@ -5,7 +5,6 @@
 
   let formatDate = (date: Date) => `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
   let noZero = (str: string): string => str.replace(/^0+(?!$)/, "")
-
 </script>
 
 <div class="border"></div>

@@ -1,18 +1,27 @@
 <script>
     import Modal from '$lib/components/Modal.svelte';
+    import Scholarship from "$lib/components/Scholarship.svelte"
     let showModal = $state(false);
+    
+
+    let { data } = $props()
+
 
 </script>
 
 
-<button onclick={() => (showModal = true)}>show modal</button>
 
+
+{#each data.scholarships as scholarship}
+    <button onclick={() => (showModal = true)}>show modal</button>
+    <Scholarship name={scholarship.name} deadline={formatDate(new Date(scholarship.deadline))} description={scholarship.description}/>
+{/each}
 
 <Modal bind:showModal>
-hi
+    
 </Modal>
 
-
+<h1>hi</h1>
 
 <style>
     dialog {

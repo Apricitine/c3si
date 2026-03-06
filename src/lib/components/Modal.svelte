@@ -5,6 +5,7 @@
     $effect(() => {
 		if (showModal) dialog.showModal();
 	});
+
 </script>
 
 <dialog bind:this={dialog}
