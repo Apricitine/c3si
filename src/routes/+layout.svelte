@@ -19,7 +19,7 @@
     <div class="brand">
       <span class="dot"></span>
       <div>
-        <p class="eyebrow">College & Career Collective</p>
+        <p class="eyebrow">College & Career Center</p>
         <p class="title">C3 Opportunities</p>
       </div>
     </div>
