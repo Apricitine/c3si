@@ -2,13 +2,16 @@
   import Modal from "$lib/components/Modal.svelte"
   import Scholarship from "$lib/components/Scholarship.svelte"
   import Tag from "$lib/components/Tag.svelte"
+  import Search from "$lib/components/Search.svelte"
   import type { PageServerData } from "../$types"
+  import stringSimilarity from "$lib/scripts/Regex"
 
   let { data }: PageServerData = $props()
   type ScholarshipShape = (typeof data.scholarships)[number]
 
   let showModal = $state(false)
   let activeScholarship = $state<ScholarshipShape | null>(null)
+  let searchTerm = $state("")
 
   const formatDate = (date: Date) =>
     `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
@@ -35,10 +38,31 @@
     activeScholarship = scholarship
     showModal = true
   }
+
+  // iterate through the scholarships
+  // determine the searchSimilarity of each and map that to its id
+  // iterate through that list to get an ordered array of the 
+
+
 </script>
 
+<Search bind:searchTerm />
+
+
 <section class="scholarship-grid">
+
+
   {#each data.scholarships as scholarship (scholarship.id)}
+    {const x = stringSimilarity(searchTerm, scholarship.name)
+    let newData = data.scholarships
+     for (let index = 0; index < data.scholrahips.length; index++) {
+      const element = data.scholarships[index];
+      if (x > stringSimilarity(searchTerm, element))
+      
+     } 
+    }
+
+    
     <Scholarship
       onclick={() => openScholarship(scholarship)}
       name={scholarship.name}
