@@ -6,6 +6,11 @@
   import type { PageServerData } from "../$types"
   import stringSimilarity from "$lib/scripts/Regex"
 
+  interface IDSimilarity {
+      id: number
+      similarity: number
+    }
+
   let { data }: PageServerData = $props()
   type ScholarshipShape = (typeof data.scholarships)[number]
 
@@ -43,17 +48,14 @@
   // iterate through the scholarships
   // determine the searchSimilarity of each and map that to its id
   // iterate through that list to get aoe 
-  const sortScholarships = (scholarshipList: Scholarship[], searchTerm: string) => {
-    interface IdSimilarity {
-      ID: number
-      Similarity: number
+  const sortScholarships = (searchTerm: string): IDSimilarity[] => {
+    
+    let idList: IDSimilarity[]
+    data.scholarships.forEach((scholarship: Scholarship) => {
+      idList.push({ id: scholarship.id })
+    })
 
-    }
-    scholarshipList.forEach((scholarship: Scholarship) => {
-
-      
-    });
-
+    return idList
   }
 
 
@@ -67,7 +69,7 @@
 
   {#each data.scholarships as scholarship (scholarship.id)}
     {const x = stringSimilarity(searchTerm, scholarship.name)
-    let newData = data.scholarshipsa
+    let newData = data.scholarships
      for (let index = 0; index < data.scholrahips.length; index++) {
       const element = data.scholarships[index];
       if (x > stringSimilarity(searchTerm, element))
