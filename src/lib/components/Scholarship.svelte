@@ -30,8 +30,8 @@
   class="scholarship-card"
   role="button"
   tabindex="0"
-  on:click={props.onclick}
-  on:keydown={handleKeydown}
+  onclick={props.onclick}
+  onkeydown={handleKeydown}
 >
   <div class="header">
     <div class="header-left">
@@ -204,8 +204,6 @@
     line-height: 1.5;
     font-size: 0.98rem;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
@@ -234,10 +232,6 @@
     .scholarship-card {
       padding: 0.9rem 1rem;
       border-radius: 12px;
-    }
-
-    .description {
-      -webkit-line-clamp: 4;
     }
   }
 </style>
