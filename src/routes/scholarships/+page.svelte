@@ -2,7 +2,6 @@
   import Modal from "$lib/components/Modal.svelte"
   import Scholarship from "$lib/components/Scholarship.svelte"
   import Tag from "$lib/components/Tag.svelte"
-  import type { PageServerData } from "../$types"
 
   let { data } = $props()
   type ScholarshipShape = (typeof data.scholarships)[number]
