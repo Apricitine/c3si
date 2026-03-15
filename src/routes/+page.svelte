@@ -1,8 +1,8 @@
 <section class="hero">
   <p class="eyebrow">Welcome</p>
-  <h1>your one-stop reference for scholarships and internships at LCHS</h1>
+  <h1>Your one-stop reference for scholarships and internships at LCHS</h1>
   <p class="lede">
-    discover opportunities tailored to you LCHS students! don't waste time on irrelevant stuff
+    Discover opportunities tailored to you LCHS students! Don't waste time on irrelevant stuff.
   </p>
 
   <div class="actions">
