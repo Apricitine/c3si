@@ -4,7 +4,7 @@
   import Tag from "$lib/components/Tag.svelte"
   import type { PageServerData } from "../$types"
 
-  let { data }: PageServerData = $props()
+  let { data } = $props()
   type ScholarshipShape = (typeof data.scholarships)[number]
 
   let showModal = $state(false)
@@ -114,7 +114,7 @@
     letter-spacing: 0.08em;
     font-weight: 700;
     font-size: 0.75rem;
-    color: #8a1f18;
+    color: rgba(15, 60, 164, 0.9);
     margin: 0;
   }
 
@@ -123,8 +123,8 @@
     align-items: center;
     gap: 10px;
     padding: 0.45rem 0.7rem;
-    background: rgba(246, 195, 68, 0.16);
-    border: 1px solid rgba(246, 195, 68, 0.32);
+    background: rgba(56, 189, 248, 0.16);
+    border: 1px solid rgba(56, 189, 248, 0.32);
     border-radius: 10px;
   }
 
@@ -139,12 +139,12 @@
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #7a2a1f;
+    color: #0f3ca4;
   }
 
   .deadline-text strong {
     font-size: 1rem;
-    color: #b3261e;
+    color: #1d4ed8;
   }
 
   .countdown {
@@ -157,8 +157,8 @@
     font-size: 0.85rem;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    background: rgba(246, 195, 68, 0.2);
-    color: #7a2a1f;
+    background: rgba(56, 189, 248, 0.2);
+    color: #0b2f66;
   }
 
   .countdown.calm {
@@ -171,20 +171,20 @@
     background: rgba(246, 195, 68, 0.28);
     color: #7a2a1f;
     box-shadow: inset 0 0 0 1px rgba(246, 195, 68, 0.5);
-    animation: pulse 1.4s ease-in-out infinite;
+    animation: pulse 1s ease-in-out infinite;
   }
 
   .countdown.hot {
     background: rgba(179, 38, 30, 0.22);
     color: #b3261e;
     box-shadow: inset 0 0 0 1px rgba(179, 38, 30, 0.5), 0 0 0 6px rgba(179, 38, 30, 0.12);
-    animation: pulse-fast 0.9s ease-in-out infinite, shake 1.6s ease-in-out infinite;
+    animation: pulse-fast 0.9s ease-in-out infinite, shake 1.0s ease-in-out infinite;
   }
 
   .countdown.passed {
-    background: rgba(64, 54, 50, 0.14);
-    color: #4a3f3b;
-    box-shadow: inset 0 0 0 1px rgba(64, 54, 50, 0.3);
+    background: rgba(90, 112, 144, 0.14);
+    color: #4f5f7d;
+    box-shadow: inset 0 0 0 1px rgba(90, 112, 144, 0.3);
     text-decoration: line-through;
   }
 
@@ -207,7 +207,7 @@
 
   .description {
     margin: 0;
-    color: #2b1a12;
+    color: var(--text);
     line-height: 1.55;
   }
 
@@ -217,11 +217,11 @@
     gap: 8px;
     padding: 10px 12px;
     border-radius: 10px;
-    background: linear-gradient(135deg, #f6c344, #b3261e);
-    color: #2c0f0b;
+    background: linear-gradient(135deg, #38bdf8, #1d4ed8);
+    color: #0b1f3b;
     text-decoration: none;
     font-weight: 800;
-    box-shadow: 0 12px 26px rgba(179, 38, 30, 0.22);
+    box-shadow: 0 12px 26px rgba(37, 99, 235, 0.22);
     width: fit-content;
   }
 
