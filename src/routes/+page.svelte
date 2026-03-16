@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { PageServerData } from "./$types"
+  import { fade, fly, scale, blur } from 'svelte/transition';
 
   let { data }: PageServerData = $props()
 
@@ -70,9 +71,13 @@
 
     <div class="highlights">
       <div class="tile">
-        <span class="pill">{scholarshipName}</span>
-        <p class="title">{scholarshipDeadline}</p>
-        <p class="copy">idek idek</p>
+          {#key scholarshipName}
+            <div in:fly={{ y: 0, duration: 500 }} out:fade={{ duration: 300 }} class="card">
+              <span class="pill">UPCOMING!</span>
+              <p class="title">{scholarshipName}</p>
+              <p class="copy">{scholarshipDeadline}</p>
+            </div>
+          {/key}
       </div>
       <div class="tile">
         <span id="pill"class="pill">clear</span>
@@ -186,6 +191,16 @@
     border-radius: 16px;
     padding: 14px 16px;
     box-shadow: inset 0 0 0 1px rgba(246, 195, 68, 0.14);
+
+    position: relative; 
+    display: grid; 
+    place-items: start;
+    min-height: 120px;
+  }
+
+  .card {
+    grid-area: 1 / 1;
+    width: 100%;
   }
 
   .pill {
