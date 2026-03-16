@@ -82,7 +82,7 @@
 
 </script>
 
-<Search bind:searchTerm />
+<Search bind:searchTerm on:input={(let displayOrder = sortScholarships (searchTerm))} />
 
 <section class="scholarship-grid">
   {#each data.scholarships as scholarship (scholarship.id)}

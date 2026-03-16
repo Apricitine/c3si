@@ -1,3 +1,6 @@
+//maybe use fuzzy finding algorithm
+
+
 export default function stringSimilarity(a: string, b: string): number {
   if (a === b) return 100;
   if (a.length === 0 || b.length === 0) return 0;
@@ -10,10 +13,10 @@ export default function stringSimilarity(a: string, b: string): number {
     for (let j = 1; j <= a.length; j++) {
       matrix[i][j] = b[i - 1] === a[j - 1]
         ? matrix[i - 1][j - 1]
-        : 1 + Math.min(matrix[i - 1][j], matrix[i][j - 1], matrix[i - 1][j - 1]);
+        : 1 + Math.min(matrix[i - 1][j], matrix[i][j - 1], matrix[i - 1][j - 1])
     }
   }
 
   const maxLen = Math.max(a.length, b.length);
-  return Math.round((1 - matrix[b.length][a.length] / maxLen) * 100);
+  return Math.round((1 - matrix[b.length][a.length] / maxLen))
 }
