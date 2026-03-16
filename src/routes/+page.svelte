@@ -1,13 +1,28 @@
 <script lang="ts">
   import type { PageServerData } from "./$types"
 
-  let { data }: PageServerData = $props()
-
-  const sample_data = data.scholarships[0]
-
   let test = document.getElementById("pill")
 
-  test = sample_data
+  let { data }: PageServerData = $props()
+
+  const firstScholarshipName = data.scholarships[0].name;
+  const year = parseInt((data.scholarships[0].deadline.split("T")[0]).split("-")[0], 10);
+  const month = parseInt((data.scholarships[0].deadline.split("T")[0]).split("-")[1], 10);
+  const day = parseInt((data.scholarships[0].deadline.split("T")[0]).split("-")[2], 10);
+  
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth() + 1;
+  const currentDay = now.getDate();
+
+  const yearDifference = (currentYear - year) * 365;
+  const monthDifference = (currentMonth - month) * 30;
+  const dayDifference = currentDay - day;
+
+  const totalDay = yearDifference + monthDifference + dayDifference;
+
+  let firstScholarshipDeadline = totalDay + " DAYS LEFT";
+
 </script>
 
   <section class="hero">
@@ -24,12 +39,12 @@
 
     <div class="highlights">
       <div class="tile">
-        <span class="pill"></span>
-        <p class="title">deadlines</p>
+        <span class="pill">{firstScholarshipName}</span>
+        <p class="title">{firstScholarshipDeadline}</p>
         <p class="copy">idek idek</p>
       </div>
       <div class="tile">
-        <span class="pill">clear</span>
+        <span id="pill"class="pill">clear</span>
         <p class="title">all the info</p>
         <p class="copy">all the info you need to get working on those applications</p>
       </div>
