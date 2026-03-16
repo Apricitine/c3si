@@ -56,7 +56,7 @@
   }
 
   .app-shell {
-    max-width: 1100px;
+    max-width: 80vw;
     margin: 0 auto;
     padding: 32px 20px 64px;
   }
@@ -132,6 +132,7 @@
 
   .page {
     margin-top: 28px;
+    width: 100%;
   }
 
   @media (max-width: 720px) {
