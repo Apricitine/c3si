@@ -70,9 +70,11 @@
         break
       }
     }
+    console.log(idList)
     return idList;
   }
 
+  let displayOrder: IDSimilarity[] = $state([])
 
 
   //let displayOrder = sortScholarships(searchTerm)
@@ -82,7 +84,7 @@
 
 </script>
 
-<Search bind:searchTerm on:input={(let displayOrder = sortScholarships (searchTerm))} />
+<Search bind:searchTerm on:input={() => displayOrder = sortScholarships(searchTerm)} />
 
 <section class="scholarship-grid">
   {#each data.scholarships as scholarship (scholarship.id)}
