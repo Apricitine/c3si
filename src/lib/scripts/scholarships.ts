@@ -17,7 +17,7 @@ export type ScholarshipDTO = {
   endowment: Endowment[]
 }
 
-export class Scholarship {
+export class Scholarship implements ScholarshipDTO {
   id: number
   name: string
   created: string
@@ -77,6 +77,10 @@ export class Scholarship {
     if (days < 0) return "Passed"
     if (short) return `${days}d`
     return `${days} days`
+  }
+
+  endowmentRange(): [number, number] {
+    return [1, 2]
   }
 
   toJSON(): ScholarshipDTO {
