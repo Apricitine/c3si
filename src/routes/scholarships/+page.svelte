@@ -1,48 +1,28 @@
 <script lang="ts">
   import Modal from "$lib/components/Modal.svelte"
-  import Scholarship from "$lib/components/Scholarship.svelte"
+  import ScholarshipCard from "$lib/components/Scholarship.svelte"
   import Tag from "$lib/components/Tag.svelte"
+  import { Scholarship, type ScholarshipDTO } from "$lib/scripts/scholarships"
 
-  let { data } = $props()
-  type ScholarshipShape = (typeof data.scholarships)[number]
+  let { data }: { data: { scholarships: ScholarshipDTO[] } } = $props()
 
+  let scholarships = $derived(data.scholarships.map(Scholarship.from))
   let showModal = $state(false)
-  let activeScholarship = $state<ScholarshipShape | null>(null)
+  let activeScholarship = $state<Scholarship | null>(null)
 
-  const formatDate = (date: Date) =>
-    `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
-
-  const daysUntil = (deadline: string) => {
-    const msPerDay = 1000 * 60 * 60 * 24
-    const today = new Date()
-    today.setHours(0, 0, 0, 0)
-    const target = new Date(deadline)
-    target.setHours(0, 0, 0, 0)
-    return Math.ceil((target.getTime() - today.getTime()) / msPerDay)
-  }
-
-  const countdownClass = (days: number) => {
-    if (days < 0) return "passed"
-    if (days <= 3) return "hot"
-    if (days <= 10) return "warm"
-    return "calm"
-  }
-
-  const countdownLabel = (days: number) => (days < 0 ? "Passed" : `${days} days`)
-
-  const openScholarship = (scholarship: ScholarshipShape) => {
+  const openScholarship = (scholarship: Scholarship) => {
     activeScholarship = scholarship
     showModal = true
   }
 </script>
 
 <section class="scholarship-grid">
-  {#each data.scholarships as scholarship (scholarship.id)}
-    <Scholarship
+  {#each scholarships as scholarship (scholarship.id)}
+    <ScholarshipCard
       onclick={() => openScholarship(scholarship)}
       name={scholarship.name}
-      deadline={formatDate(new Date(scholarship.deadline))}
-      daysLeft={daysUntil(scholarship.deadline)}
+      deadline={scholarship.formattedDeadline()}
+      daysLeft={scholarship.daysUntil()}
       description={scholarship.description}
     />
   {/each}
@@ -56,12 +36,12 @@
         <h2>{activeScholarship.name}</h2>
       </div>
       <div class="deadline">
-        <span class={`countdown ${countdownClass(daysUntil(activeScholarship.deadline))}`}>
-          {countdownLabel(daysUntil(activeScholarship.deadline))}
+        <span class={`countdown ${activeScholarship.countdownClass()}`}>
+          {activeScholarship.countdownLabel()}
         </span>
         <div class="deadline-text">
           <span>Deadline</span>
-          <strong>{formatDate(new Date(activeScholarship.deadline))}</strong>
+          <strong>{activeScholarship.formattedDeadline()}</strong>
         </div>
       </div>
     </header>
